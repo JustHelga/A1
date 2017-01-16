@@ -11,7 +11,6 @@ import java.util.Random;
  * @author gvj (gvj@eecs.uottawa.ca)
  *
  */
-
 public class A1Q4{
 
 	/**
@@ -262,7 +261,7 @@ public class A1Q4{
 
 				sizeComputerDeck=ArrayStringsTools.appendItem(computerDeck, sizeComputerDeck, playerDeck[cardPosition]);
 				sizePlayerDeck=ArrayStringsTools.removeItemByIndex(playerDeck,sizePlayerDeck,cardPosition);
-				//sizeComputerDeck=ArrayStringsTools.removePairs(computerDeck, sizeComputerDeck);
+			    sizeComputerDeck= removePairs(computerDeck, sizeComputerDeck);
 
 				if (cardPosition==0) {
 					System.out.println("I took your 1st card");
