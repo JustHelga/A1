@@ -1,7 +1,13 @@
+/*
+Olga Surzhok
+8317010
+ITI1121 A
+Assignment 1
+*/
 
 import java.util.Scanner;
 import java.util.Random;
-import java.util.InputMismatchException;
+
 
 /**
  * The class <b>A1Q4</b> is an implementation of the
@@ -165,24 +171,92 @@ public class A1Q4{
 
 		System.out.println("I have " + sizeComputerDeck + " cards. If 1 stands for my first card and");
 		System.out.println(sizeComputerDeck + " for my last card, which of my cards would you like?");
-		int position = 0;
-		try {
+		//int iPosition = 0;
+		//String sPosition = "";
+
+		/*while (sPosition.equals("")){
+			boolean notDigit = false;
+			sPosition = sc.next(); // maybe nextLine
+
+			char[] digits = {'0','1','2','3','4','5','6','7','8','9'};
+			for (int i = 0; i < sPosition.length(); i++){
+				for (int j = 0; j <= 10; j++) {
+					if (sPosition.charAt(i) == digits[j]){
+						notDigit = false;
+						break;
+					} else {
+						notDigit = true;
+					}	
+				}
+				if (notDigit){
+					System.out.println("Invalid input. Please enter an integer");
+					sPosition = "";
+					break;
+				}
+
+				int check = Integer.
+			}
+		}
+
+		iPosition = Integer.parseInt(sPosition);
+		*/
+
+		/*try {
 			position = sc.nextInt();			
 		} catch (InputMismatchException e){
 			sc.next();
-		}
+		}*/
 		
-		while (!(position >= 1 && position <= sizeComputerDeck)){
+	/*	while (!(iPosition >= 1 && iPosition <= sizeComputerDeck)){
 			System.out.println("Invalid input. Please enter an integer between 1 and "+sizeComputerDeck);
 			try {
-				position = sc.nextInt();
+				iPosition = sc.nextInt();
 			} catch (InputMismatchException e){
 				sc.next();
 			}
 
+		}*/
+
+
+
+		//return iPosition;
+
+		int position = 0;
+		String rawInput = sc.next();
+
+		boolean flag = true;
+		boolean innerFlag;
+
+		while (flag){
+
+			innerFlag = false;
+
+			for (int i = 0; i < sizeComputerDeck; i++){
+				char tempChar = rawInput.charAt(i);
+				if (!(Character.isDigit(tempChar))){
+					innerFlag = true;
+				}
+			}
+
+			if (innerFlag){
+				System.out.println("Invalid input. Please enter an integer between 1 and " + sizeComputerDeck);
+			} else {
+				position = Integer.parseInt(rawInput);
+				if (position > 0 && position <= sizeComputerDeck){
+					break;
+				} else {
+					System.out.println("Invalid input. Please enter an integer between 1 and " + sizeComputerDeck);
+				}
+			}
+
+			rawInput = sc.next();
+			 
+
 		}
 
 		return position;
+
+
 	
 	}
 
@@ -275,9 +349,11 @@ public class A1Q4{
 		}
 		
 		if (sizeComputerDeck == 0){
+			System.out.println("");
 			System.out.println("Oops. I don't have any more cards.");
 			System.out.println("I, Robot, win.");
 		} else {
+			System.out.println("");
 			System.out.println("Oops. You don't have any more cards.");
 			System.out.println("You, Human, win.");
 		}
@@ -294,6 +370,8 @@ public class A1Q4{
  
 	public static void main(String[] args){
 	
+		StudentInfo.display();
+
 		A1Q4 game = new A1Q4();		
 
 		game.playGame();
